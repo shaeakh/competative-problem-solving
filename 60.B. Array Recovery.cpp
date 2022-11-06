@@ -7,9 +7,9 @@ int main(){
     while(t--){
         cin>>n;
         bool flag = false;
-        long long int d[n]={0};
-        long long int a[n]={0};
-        long long int m_in,ma_x;
+        int d[n]={0};
+        int a[n]={0};
+        int m_in,ma_x;
         for(int i=0;i<n;i++) cin>>d[i];
 
         a[0]=d[0];
