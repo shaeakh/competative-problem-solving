@@ -2,60 +2,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5+10;
-const long long int INF = LLONG_MAX	;
-vector < pair <int,long long int> > g[N]; // {end_point,weight}
+vector< vector<long long int> > g;
+#define INF 10e15 
 
+int main(){
+    long long int n,m,q;
+    long long int a,b,wt;
+    cin>>n>>m>>q;
+    g.resize(n+1);
+    for(int i=0;i<n+1;i++) g[i].resize(n+1);
 
-long long int dijsktra(int source,long long int n,int end){
-    
-    vector<int> vis(N,0);
-    vector<long long int>dist(N,INF);
-    vector<int>P(n+1,0);
-
-    set<pair<long long int,int>> set;  // {weight,end_point}
-    set.insert({0,source});
-    dist[source]=0;
-    P[source]=0;
-    while (!set.empty())
-    {
-        auto node = *set.begin();
-        long long int v= node.second;
-        long long int dis=node.first;
+    for(int i=1;i<=n;++i){
+        for(int j=1;j<=n;++j)
+        {
+            if(i==j) g[i][j] = g[j][i] = 0;
+            else g[i][j] = g[j][i] = INF;
+        }
         
-        set.erase(set.begin());
-
-        if(vis[v]==1) continue;
-        vis[v]=1;
-
-        for(auto child : g[v]){
-            long long int child_v=child.first;
-            long long int wt=child.second;
-            if(dis+wt < dist[child_v]){
-                 dist[child_v] = dis+wt;
-                 set.insert({dist[child_v],child_v});
+    }
+    for(int i=0; i<m; i++){
+        cin>>a>>b>>wt;
+        g[a][b] = g[b][a] = min(g[a][b],wt);
+    }
+    for (int k = 1; k <= n; k++)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= n; j++){
+                g[i][j] = min (g[i][j] , g[i][k]+g[k][j]  );
             }
         }
-       if(v==end) return dist[v];
-    }
-    return -1;
-}
-int main(){
-    int n,m,q;
-    cin>>n>>m>>q;
-    for(int i=0; i<m; i++){
-        long long int a,b;
-        long long int wt;
-        cin>>a>>b>>wt;
-        g[a].push_back({b,wt});
-        g[b].push_back({a,wt});
     }
     while (q--)
     {
-        int start,end;
-        cin>>start>>end;
-        cout<<dijsktra(start,n,end)<<endl;
+        cin>>a>>b;
+        if(g[a][b]>=INF) cout<<"-1"<<endl;
+        else cout<<g[a][b]<<endl;
     }
     return 0;
 }
-/* problem link: */
+/* problem link: https://cses.fi/problemset/result/5638554/#test13 */
