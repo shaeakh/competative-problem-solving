@@ -3,7 +3,17 @@
 using namespace std;
 
 void solve() {
-    cout<< 1<<8 <<endl;
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int ara[3];
+        cin>>ara[0]>>ara[1]>>ara[2];
+        sort(ara,ara+3);
+        if(ara[1]+ara[2]>=10) cout<<"YES\n";
+        else cout<<"NO\n";
+    }
+    
 }
 
 int main(){
