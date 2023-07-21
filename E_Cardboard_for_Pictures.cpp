@@ -11,19 +11,19 @@ void solve() {
         long long int k;
         cin>>n>>k;
         int ara[n];
-        long long int a=4*n,b=0,c=0;
+        long long int a=1,b=0,c=0;
 
         for (int i = 0; i < n; i++){
             cin>>ara[i];
             b = b + ara[i];
             c = c + ara[i]*ara[i];
         } 
-        b = b*4;
-        c = c-k;
+        b = b/n;
+        c = (c-k)/(4*n);
         long long int x = sqrt(abs(b*b - 4*a*c));
         long long int x1 =( (-1)*b + x ) / (2*a);
         long long int x2 =( (-1)*b - x ) / (2*a);
-        cout<<x<<" "<<x1<<" "<<x2<<endl;
+        cout<<x1<<endl;
         //if(x1 >= 1) cout<<x1<<endl;
         //else if(x2 >= 1) cout<<x2<<endl;
     }
