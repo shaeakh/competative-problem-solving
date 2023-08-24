@@ -1,70 +1,38 @@
 /*bismillahir~rahmanir~rahim*/
 #include <bits/stdc++.h>
 using namespace std;
-int n,m,rooms=0;
-vector < vector <bool> > vis;
-vector < vector <int> > r;
-vector < pair<int,int> > moves = {{-1,0},{1,0},{0,-1},{0,1}};
+const int N = 10e5+10;
+int g[N][N];
+bool vis[N][N];
+int level[N][N];
+queue<pair<int,int>>q;
 
-bool IsValid(int x, int y){
-    if(x < 0 || x >=n || y < 0 || y >=m  ) return false;
-    if(vis[x][y]) return false;
-    return true;
+char s[1001][1001];
+
+bool IsValid(int x,int y,int n,int m){
+    if( x>=0 && x<n && y>=0 && y<m && s[x][y] == '.' ) return true;
+    else return false;
 }
 
-void dfs(int i, int j){
-    vis[i][j] = true;
-    for(auto p : moves){
-        if( IsValid(i+p.first,j+p.second) ){
-            dfs(i+p.first, j+p.second);
-        }
-    }
-}
 
-void connected_components(){
+
+void solve() {
+    int n,m;
+    cin>>n>>m;
+    int ax,ay,bx,by;
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
-            if(!vis[i][j]){
-                r[i][j]=rooms;
-                dfs(i,j);
-                ++rooms;
-            }
+            cin>>s[i][j];
+
         }
     }
+    
 }
 
-
 int main(){
-    cin>>n>>m;
-    vis.resize(n);
-    int i1,i2,j1,j2;
-	for(int i = 0; i < n; ++i)
-	{
-		vis[i].resize(m);
-	}
- 
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = 0; j < m; ++j)
-		{
-			char c; cin >> c;
-			if(c == '#')
-			{
-				vis[i][j] = true;
-			}
-            else if(c == 'A')
-			{
-				i1=i; j1=j;
-			}
-            if(c == 'B')
-			{
-				i2=i; j2=j;
-			}
-            
-		}
-	}
-	connected_components();
-	if(r[i1][j1]==r[i2][j2]) cout<<"YES";
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    solve();
     return 0;
 }
 /* problem link: */
