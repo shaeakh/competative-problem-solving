@@ -1,7 +1,7 @@
 /*bismillahir~rahmanir~rahim*/
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int
+#define ll long long int 
 #define cin(n) ll n ; cin>>n;
 #define cout(n) cout<<n;
 #define for_loop(i, j, n) for (ll i = j; i <= n; i++)
@@ -11,29 +11,32 @@ using namespace std;
 #define yes cout << "YES\n";
 #define newline cout<<"\n";
 #define space cout<<" ";
-const int N = 10e5+10;
-const int inf = 10e8;
-vector<int>prime;
-vector<bool>vis(N,true);
 
-void sieve() {
-    prime.push_back(2);
-    //cout<<2<<endl;
-    for (int i = 3; i <= inf; i=i+ 2)
+void solve() {
+    int n; cin>>n;
+    ll x;
+    set<pair<int,ll>>s;
+    for (int i = 0; i < n; i++)
     {
-        if(vis[i]){
-            for(int j=i*i;j<=inf;j += 2*i) vis[j]=false;
-            prime.push_back(i);
+        cin>>x;
+        ll og_x = x;
+        int y=0;
+        while (x%3==0)
+        {
+            y++;
+            x = x/3;
         }
-    }
-    for (int i = 0; i <= 50; i=i+1) cout<<prime[i]<<endl;
+        s.insert({-y,og_x});
 
+    }
+    for(auto y: s) cout<<y.second<<" ";
+    
 }
 
 int main(){
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    sieve();
+    solve();
     return 0;
 }
 /* problem link: */
