@@ -32,37 +32,41 @@ void sieve(ll N)
         }
     }
 
-    for(int i = 0;i<prime.size();i++) cout<<prime[i]<<" ";
+    //for(int i = 0;i<prime.size();i++) cout<<prime[i]<<" ";
     
 }
 
-void segmented_sieve(ll l,ll r){
-     ll sqrtN = sqrt(r);
-    for(ll i=0;prime[i]<=sqrtN;i++){
-        ll p = prime[i];
-        cout<<p<<" ";
-        for (ll j = ((l+p-1)/p)*p ; j<=r; j+=p) 
-        {
-            isprime[j-l] = true;
-        }
-        
-    }
-    for(ll i = 0;i<=r-l;i++){
-        if(isprime[i]) cout<<i+l<<" is not prime\n";
-        else cout<<i+l<<" is prime\n";
-    }
+
+void segmentedSieve(ll l, ll r)
+{
+     bool flag;
+     ll sqrtN = sqrt(r);  
+     for(ll i = l; i<= r;i++){
+        //cout<<"num "<<i<<endl;
+         flag = true;
+         if(i==1) flag = false;
+         for(ll j=0; prime[j]*prime[j]<=i && j<prime.size(); j++){
+             if(i%prime[j]==0 && i!=prime[j]){
+                 flag = false;
+                 break;
+             }
+         }
+         if(flag) cout<<i<<endl;
+     }
 }
-
-
-
 int main(){
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    
-    ll l=10,r=100; 
-    //cin>>l>>r;
-    sieve(r);
-    segmented_sieve(l,r);   
+    ll t;
+    cin>>t;
+    while (t--)
+    {
+        ll l,r; 
+        cin>>l>>r;
+        sieve(r);
+        segmentedSieve(l,r);   
+        cout<<endl;   
+    }
     return 0;
 }
-/* problem link: */
+/* problem link: https://www.spoj.com/problems/PRIME1/ */

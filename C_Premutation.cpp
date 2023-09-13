@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void sort1(int ara[], int &n,int ara2[]){ // this is for vector. for an arry
+void sort1(vector<int> vect, int &n,int ara2[]){ // this is for vector. for an arry
 int i,j,temp;                      //just pass this (int arr[], int n)
 for(i=0;i<n;i++){
     bool flag = true;

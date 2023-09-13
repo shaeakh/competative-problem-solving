@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int upper_bound(int ara[],int x,int n){
+int upper_bound(vector<int> vect,int x,int n){
 
     if(x<ara[0]) return 0;
     if(x>=ara[n-1]) return n;

@@ -27,4 +27,4 @@ int main ()
 		 }
    return 0;
 }
-//prob link: https://www.spoj.com/problems/TDPRIMES/
+//prob link: https://www.spoj.com/problems/TDISprimeS/

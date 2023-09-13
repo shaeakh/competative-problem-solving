@@ -11,30 +11,33 @@ using namespace std;
 #define yes cout << "YES\n";
 #define newline cout<<"\n";
 #define space cout<<" ";
+#define for_n for(ll i = 0; i < n; i++)
+#define pb push_back
 
-long long int LCM(ll a, ll b) {
-    return (a * b) / __gcd(a, b);
-}
-
+map<ll,ll>mp;
 
 void solve() {
-    int t;
-    cin>>t;
-    while (t--)
-    {
-        ll n,x,y;
-        cin>>n>>x>>y;
-        ll l;
-        l = n/LCM ( x,y);
-        ll xx = n/x - l;
-        ll yy = n/y - l;
+    ll n; cin>>n;
+    ll arr[n];
+    for(ll i=0;i<n;i++) cin>>arr[i],mp[arr[i]]++;
 
-        ll xxx = ((n*(n+1))/2) - (((n-xx)*(n-xx+1))/2);
-        ll yyy = (yy*(yy+1))/2;
-        cout<<xxx-yyy<<endl;
+    ll cnt=0;
+
+    for(ll i=0;i<n;i++) {
+
+        bool flag = false;           2^5   1<<5     1
+
+        mp[arr[i]]--;
+        for(ll j=1;j<=30;j++){
+            ll t = (1<<j) - arr[i];
+            ll t = pow(2,j) - arr[i];
+            if( mp.find(t) != mp.end() && mp[t]>0 ) flag=true;
+        }
+        mp[arr[i]]++;
+        if(!flag) cnt++;
 
     }
-    
+    cout<<cnt<<endl;
 }
 
 int main(){

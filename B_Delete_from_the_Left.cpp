@@ -11,30 +11,31 @@ using namespace std;
 #define yes cout << "YES\n";
 #define newline cout<<"\n";
 #define space cout<<" ";
+#define for_n for(ll i = 0; i < n; i++)
+#define pb push_back
 
-long long int LCM(ll a, ll b) {
-    return (a * b) / __gcd(a, b);
+ll ok(ll a, ll b){
+    if(a-b<0) return 0;
+    else return a-b;
 }
 
 
 void solve() {
-    int t;
-    cin>>t;
-    while (t--)
+    string s1,s2;
+    cin>>s1>>s2;
+    ll x1 = s1.size(),x2=s2.size();
+    
+    x1--;x2--;
+    ll ans=0;
+    while (s1[x1]==s2[x2])
     {
-        ll n,x,y;
-        cin>>n>>x>>y;
-        ll l;
-        l = n/LCM ( x,y);
-        ll xx = n/x - l;
-        ll yy = n/y - l;
-
-        ll xxx = ((n*(n+1))/2) - (((n-xx)*(n-xx+1))/2);
-        ll yyy = (yy*(yy+1))/2;
-        cout<<xxx-yyy<<endl;
-
+        ans++;
+        x1--;x2--;
+        if(x1==-1 || x2==-1) break;
     }
     
+    ll result = ok(s1.size(),ans) + ok(s2.size(),ans);
+    cout<<result<<endl;
 }
 
 int main(){
