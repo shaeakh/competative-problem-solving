@@ -5,38 +5,40 @@ using namespace std;
 #define cin(n) ll n ; cin>>n;
 #define cout(n) cout<<n;
 #define for_loop(i, j, n) for (ll i = j; i <= n; i++)
+#define for_n for(ll i = 0; i < n; i++)
 #define st(v) sort(v.begin(), v.end());
 #define sz(x) (ll) x.size()
 #define no cout << "NO\n";
 #define yes cout << "YES\n";
 #define newline cout<<"\n";
 #define space cout<<" ";
-#define for_n for(ll i = 0; i < n; i++)
 #define pb push_back
 
-map<ll,ll>mp;
-
 void solve() {
-    ll n; cin>>n;
-    ll arr[n];
-    for(ll i=0;i<n;i++) cin>>arr[i],mp[arr[i]]++;
-
-    ll cnt=0;
-
-    for(ll i=0;i<n;i++) {
-
-        bool flag = false;           
-
-        mp[arr[i]]--;
-        for(ll j=1;j<=30;j++){
-            ll t = (1<<j) - arr[i];  
-            if( mp.find(t) != mp.end() && mp[t]>0 ) flag=true;
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        ll n; cin>>n;
+        ll a[n],b[n];
+        ll c[2*n];
+        for(ll i=0;i<n;i++) cin>>a[i];
+        for(ll i=0;i<n;i++) cin>>b[i];
+        c[0] = a[0];
+        for(int k=1,j=0,i=1;k<2*n;k++){
+            if( c[k-1]== b[j] && j<n){
+                c[k]=b[j];
+                j++;
+            }
+            else {
+                c[k]=a[i];
+                i++;
+                if(i==n-1) break;
+            }
         }
-        mp[arr[i]]++;
-        if(!flag) cnt++;
-
+        for(int k=0;k<2*n;k++) cout<<c[k]<<" ";
+    
     }
-    cout<<cnt<<endl;
 }
 
 int main(){

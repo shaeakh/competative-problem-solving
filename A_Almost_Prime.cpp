@@ -42,4 +42,4 @@ int main(){
     solve();
     return 0;
 }
-/* problem link: */
+/* problem link: https://codeforces.com/problemset/problem/26/A */
