@@ -1,7 +1,7 @@
 /*bismillahir~rahmanir~rahim*/
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int
+#define ll long long int 
 #define cin(n) ll n ; cin>>n;
 #define cout(n) cout<<n;
 #define for_loop(i, j, n) for (ll i = j; i <= n; i++)
@@ -40,11 +40,14 @@ void BitWise_sieve(ll N){
 }
 
 bool ok(ll n){
-    for(ll y=1;y*y <=n;y++){
-        for(ll x=1;x*x*x*x<=n;x++){
-            if(y*y+x*x*x*x==n) return true;
-            else if(y*y+x*x*x*x>n) break;
+    
+    ll r;
+    for(ll y=0;y*y*y*y <=n;y++){
+        r = n - y*y*y*y;
+        for(ll x=0;x*x<=r;x++){
+            if(y*y*y*y+x*x==n) return true;
         }
+
     }
     return false;
 }
@@ -54,21 +57,19 @@ bool ok(ll n){
 
 
 void solve() {
-    BitWise_sieve(10000000+1);
     int t;
     cin>>t;
     while (t--)
     {
-        ll n; cin>>n;
-        ll ans=0;
-        for(ll i= 0;PrimeList[i]<=n;i++){
+        ll n,ans=0; cin>>n;
+        BitWise_sieve(n);
+        for(ll i=0;PrimeList[i]<=n;i++){
             if(ok(PrimeList[i])) ans++;
         }
         cout<<ans<<endl;
+        
     }
     
-
-
 }
 
 int main(){
