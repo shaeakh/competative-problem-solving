@@ -15,13 +15,22 @@ using namespace std;
 #define pb push_back
 
 void solve() {
-    set<int>s;
-    s.insert(1);
-    s.insert(1);
-    s.insert(2);
-    s.insert(2);
-    sort(s,s.size());
-    for(auto i : s) cout<<i<<" ";
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        ll n,k; cin>>n>>k;
+        ll ans = 0;
+        string s; cin>>s;
+        ll sz = s.size();
+        for(ll i=0;i<sz;i=i++){
+            if(s[i]=='B'){
+                ans++;
+                i = i + (k-1);
+            }                    
+        }
+        cout<<ans<<endl;
+    }
     
 }
 
