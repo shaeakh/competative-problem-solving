@@ -1,5 +1,7 @@
 /*bismillahir~rahmanir~rahim*/
 #include <bits/stdc++.h>
+#include <iostream>
+#include <numeric>
 using namespace std;
 #define ll long long int 
 #define cin(n) ll n ; cin>>n;
@@ -19,26 +21,30 @@ void solve() {
     cin>>t;
     while (t--)
     {
-        map<ll,ll>mp;
         ll n; cin>>n;
         ll arr[n];
-        for(ll i=0;i<n;i++) {cin>>arr[i]; mp[arr[i]]++;}
-        sort(arr,arr+n);
-        ll q;
+        map<ll,ll>mp;
+        for(ll i=0;i<n;i++) {cin>>arr[i];mp[arr[i]]++;}
+        ll q; cin>>q;
         while (q--)
         {
-            ll AaddB,AmulB;
+            ll AaddB, AmulB,AsubB;
             cin>>AaddB>>AmulB;
-            ll AsubsB = sqrt( AaddB*AaddB - 4*AmulB );
-            if((AsubsB*AsubsB) != (AaddB*AaddB - 4*AmulB) || (AaddB*AaddB < 4*AmulB) ) cout<<0<<" ";
+            ll del = AaddB*AaddB - 4*AmulB;
+            AsubB = sqrt(del);
+            if( AsubB*AsubB == del ){
+                ll a = (AaddB + AsubB)/2;
+                ll b = (AaddB - AsubB)/2;
+                if(a==b) cout<<(mp[a]*(mp[a]-1))/2<<" ";
+                else cout<<mp[a]*mp[b]<<" ";
+            }
             else{
-                ll a = (AaddB+AsubsB)/2;
-                ll b = (AaddB-AsubsB)/2;
-                cout<<mp[a]*mp[b]<<" ";   
+                cout<<0<<" ";
             }
 
         }
         cout<<endl;
+        
     }
     
 }
