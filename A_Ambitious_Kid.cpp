@@ -15,16 +15,15 @@ using namespace std;
 #define pb push_back
 
 void solve() {
-    priority_queue< pair<ll,ll>, vector<pair<ll,ll>>>pq;
-    pq.push({1,2});
-    pq.push({2,2});
-    pq.push({4,2});
-    pq.push({3,2});
-     while (!pq.empty()) {
-        pair<int,int> top_element = pq.top();
-        cout << top_element.first << " ";
-        pq.pop();
-    }
+    int n; cin>>n;
+    int arr[n];
+    int x;
+    for(int i=0;i<n;i++){
+        cin>>x;
+        (x<0) ? arr[i] = -x : arr[i] = x ;
+    } 
+    sort(arr,arr+n);
+    cout<<arr[0]<<endl;
     
 }
 
