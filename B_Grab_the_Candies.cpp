@@ -121,25 +121,17 @@ void solve(){
     int t; cin>>t;
     while (t--)
     {
-        string s; int n; 
-        bool flag = true;
-        cin>>n;
-        cin>>s;
-        n = s.size();
+        int n; cin>>n;
+        ll m = 0, b = 0;
+        ll x;
         for(int i=0;i<n;i++){
-            if(s[i]==0 || s[i]==1) continue;
-            for (int j = i+1; j < n; j++)
-            {
-                if(s[i]==s[j]){
-                    if((j-i)%2==1) flag = false;                    
-                }
-                if(!flag) break;
-            }
-            if(!flag) break;
+            cin>>x;
+            if(x%2==0) m = m + x;
+            else b = b + x;
         }
-
-        if(flag) yes;
+        if(m>b) yes;
         else no;
+        
     }
 }
 

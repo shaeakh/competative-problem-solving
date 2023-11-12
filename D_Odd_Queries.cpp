@@ -121,25 +121,30 @@ void solve(){
     int t; cin>>t;
     while (t--)
     {
-        string s; int n; 
-        bool flag = true;
-        cin>>n;
-        cin>>s;
-        n = s.size();
+        int n,q; cin>>n>>q;    
+        int l,r,k;    
+        int arr[n];
+        ll sum [n+1];
+        
+        sum[0] = 0;
         for(int i=0;i<n;i++){
-            if(s[i]==0 || s[i]==1) continue;
-            for (int j = i+1; j < n; j++)
-            {
-                if(s[i]==s[j]){
-                    if((j-i)%2==1) flag = false;                    
-                }
-                if(!flag) break;
-            }
-            if(!flag) break;
+            cin>>arr[i];
+            sum[i+1] = sum[i] + arr[i];
+        } 
+        //  for(int i=0;i<n+1;i++){
+        //      cout<<sum[i]<<" ";
+        //  } 
+        
+        while (q--)
+        {
+            cin>>l>>r>>k;
+            l--;r--;
+            ll ans = sum[l]+( sum[n] - sum[r+1] ) + (r-l+1)*k;
+            if(ans%2!=0) yes;
+            else no;
+            
         }
-
-        if(flag) yes;
-        else no;
+        
     }
 }
 

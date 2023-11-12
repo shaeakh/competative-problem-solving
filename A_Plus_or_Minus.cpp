@@ -117,35 +117,37 @@ const ld     PII =  3.14159265358979323846;  //20digits
 #define balsal printf("dhukse\n")
 #define yes    printf("YES\n")
 #define no     printf("NO\n")
+
+
+// ceil is a bad function
+// think about reverse process
+// read statement carefully
+// think about corner cases before implementing
+// don't forget to comment/uncomment define endl in interactive/non-interactive problems
+// check if you are returning from solve before resetting array values
+// try not to use continue / return statement, try to use if else
+// try to write custom functions if stl one deals with floating point values
+// don't use unordered map without custom hash
+// multiset is bad try to use map if possible
+// don't forget to return a value from a non-void function
+
 void solve(){  
     int t; cin>>t;
+    int a,b,c;
+
     while (t--)
     {
-        string s; int n; 
-        bool flag = true;
-        cin>>n;
-        cin>>s;
-        n = s.size();
-        for(int i=0;i<n;i++){
-            if(s[i]==0 || s[i]==1) continue;
-            for (int j = i+1; j < n; j++)
-            {
-                if(s[i]==s[j]){
-                    if((j-i)%2==1) flag = false;                    
-                }
-                if(!flag) break;
-            }
-            if(!flag) break;
-        }
-
-        if(flag) yes;
-        else no;
+        cin>>a>>b>>c;
+        if(a==(b+c)) cout<<"-\n";
+        else cout<<"+\n";
     }
+        
 }
 
 int main(){
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL), cout.tie(NULL);
+
     solve();
 }

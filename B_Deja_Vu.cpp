@@ -117,30 +117,54 @@ const ld     PII =  3.14159265358979323846;  //20digits
 #define balsal printf("dhukse\n")
 #define yes    printf("YES\n")
 #define no     printf("NO\n")
+
+
+// ceil is a bad function
+// think about reverse process
+// read statement carefully
+// think about corner cases before implementing
+// don't forget to comment/uncomment define endl in interactive/non-interactive problems
+// check if you are returning from solve before resetting array values
+// try not to use continue / return statement, try to use if else
+// try to write custom functions if stl one deals with floating point values
+// don't use unordered map without custom hash
+// multiset is bad try to use map if possible
+// don't forget to return a value from a non-void function
+
+void cng(ll a[],int n,ll x[],int q){
+    sort(x,x+q);
+    for (ll i = 0; i < n; i++)
+    {
+        if(i%2==1) continue;
+        ll sq = sqrt(a[i]);        
+        for (ll j = 0; j < q ; j++)
+        {
+            
+            ll p = pow(2,x[j]);
+            if(sq<p) break;
+            else if( a[i]%p==0) {cout<<"->"<<x[i]<<"->"<<a[i]<<endl ;a[i] = a[i] + pow(2,x[j]-1); }
+        }        
+    }
+    
+}
+
+
 void solve(){  
     int t; cin>>t;
     while (t--)
     {
-        string s; int n; 
-        bool flag = true;
-        cin>>n;
-        cin>>s;
-        n = s.size();
-        for(int i=0;i<n;i++){
-            if(s[i]==0 || s[i]==1) continue;
-            for (int j = i+1; j < n; j++)
-            {
-                if(s[i]==s[j]){
-                    if((j-i)%2==1) flag = false;                    
-                }
-                if(!flag) break;
-            }
-            if(!flag) break;
+        int n,q; cin>>n>>q;
+        ll a[n],x[q];
+        for(ll i=0;i<n;i++) cin>>a[i];
+        for(ll i=0;i<q;i++) cin>>x[i];
+        cng(a,n,x,q);        
+        for (int i = 0; i < n; i++)
+        {
+            cout<<a[i]<<" ";
         }
-
-        if(flag) yes;
-        else no;
+        cout<<endl;        
     }
+    
 }
 
 int main(){
