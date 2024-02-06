@@ -115,7 +115,7 @@ const ld     PII =  3.14159265358979323846;  //20digits
 #define FRU freopen("out.txt","w",stdout);
 #define mem(a,v) memset(a,v,sizeof(a))
 #define in(n,a,b) ( n>=a && n<=b )
-#define chk printf("\n |------  chk  ------|\n")
+#define balsal printf("dhukse\n")
 #define yes    printf("YES\n")
 #define no     printf("NO\n")
 
@@ -131,27 +131,16 @@ const ld     PII =  3.14159265358979323846;  //20digits
 // don't use unordered map without custom hash
 // multiset is bad try to use map if possible
 // don't forget to return a value from a non-void function
-int NOD(int n){
-    int count = 0;
-
-    for(int i=2;i *i<=n ; i++){
-        if(n%i==0){
-            while (n%i==0) n /= i;
-            count++;
-        }
-    }
-
-    if(n>1) count++;
-    return count;
-}
-
 
 void solve(){  
-    int count=0;
-    int N; cin>>N;
-    for (int i = 1 ; i <= N; i++)
-        if(NOD(i)==2) count++;
-    cout<<count<<endl;
+    int t; cin>>t;
+    while (t--)
+    {
+        ll a,b; cin>>a>>b;
+        if((a+b)%2==0) cout<<"Bob"<<endl;
+        else cout<<"Alice"<<endl;
+    }
+    
 }
 
 int main(){
@@ -162,31 +151,3 @@ int main(){
 
     solve();
 }
-
-
-
-/*  DON'T KNOW SECTION
-
-1. #pragma GCC target("popcnt")
-2. DATA TYPE : int64_t
-3. ios_base::sync_with_stdio(false);
-4. #ifndef ONLINE_JUDGE
-    file;
-    #endif // ONLINE_JUDGE
-5.  #ifndef ONLINE_JUDGE
-    #include "bits/debugTemplate.h"
-    #define dbg(x...)                 \
-        cerr << "[" << #x << "] = ["; \
-        _print(x)
-    #else
-    #define dbg(x...)
-    #endif
-6. https://codeforces.com/submissions/SA01
-   vai ei bandar code e bujhi na er id e raikha dilam 
-   onk templete ache eikhane
-7. #pragma GCC optimize("Ofast")
-   #pragma GCC target("avx,avx2,fma")
-   #pragma GCC optimization ("unroll-loops")
-8. 
-
-*/

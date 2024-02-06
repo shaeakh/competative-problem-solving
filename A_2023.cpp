@@ -115,7 +115,7 @@ const ld     PII =  3.14159265358979323846;  //20digits
 #define FRU freopen("out.txt","w",stdout);
 #define mem(a,v) memset(a,v,sizeof(a))
 #define in(n,a,b) ( n>=a && n<=b )
-#define chk printf("\n |------  chk  ------|\n")
+#define balsal printf("dhukse\n")
 #define yes    printf("YES\n")
 #define no     printf("NO\n")
 
@@ -131,27 +131,30 @@ const ld     PII =  3.14159265358979323846;  //20digits
 // don't use unordered map without custom hash
 // multiset is bad try to use map if possible
 // don't forget to return a value from a non-void function
-int NOD(int n){
-    int count = 0;
-
-    for(int i=2;i *i<=n ; i++){
-        if(n%i==0){
-            while (n%i==0) n /= i;
-            count++;
-        }
-    }
-
-    if(n>1) count++;
-    return count;
-}
-
 
 void solve(){  
-    int count=0;
-    int N; cin>>N;
-    for (int i = 1 ; i <= N; i++)
-        if(NOD(i)==2) count++;
-    cout<<count<<endl;
+    int t; cin>>t;
+    while (t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        int ans = 1;
+        int b[n];
+        for(int i=0;i<n;i++){
+            cin>>b[i];
+            ans = ans * b[i];
+        } 
+        if(2023 % ans == 0){
+             yes;
+            // balsal;
+            // cout<<ans<<endl;
+             cout<<2020/ans<<" ";
+             for(int i=0;i<k-1;i++) cout<<1<<" ";
+             cout<<endl;
+        } 
+        else no;
+    }
+    
 }
 
 int main(){

@@ -115,7 +115,7 @@ const ld     PII =  3.14159265358979323846;  //20digits
 #define FRU freopen("out.txt","w",stdout);
 #define mem(a,v) memset(a,v,sizeof(a))
 #define in(n,a,b) ( n>=a && n<=b )
-#define chk printf("\n |------  chk  ------|\n")
+#define balsal printf("dhukse\n")
 #define yes    printf("YES\n")
 #define no     printf("NO\n")
 
@@ -131,27 +131,37 @@ const ld     PII =  3.14159265358979323846;  //20digits
 // don't use unordered map without custom hash
 // multiset is bad try to use map if possible
 // don't forget to return a value from a non-void function
-int NOD(int n){
-    int count = 0;
 
-    for(int i=2;i *i<=n ; i++){
-        if(n%i==0){
-            while (n%i==0) n /= i;
-            count++;
+int memo[8192][5];
+int coins[] = {50,25,10,5,1};
+
+int waysOfCng(int money, int coinIndex){
+    if(money == 0) return 1;
+    if( memo[money][coinIndex] != -1 ) return memo[money][coinIndex];
+
+    int ways = 0;
+
+    for(int i=0;i<5;++i){
+        if(money>=coins[i]){
+            ways += waysOfCng( money-coins[i],i );
         }
     }
-
-    if(n>1) count++;
-    return count;
+    memo[money][coinIndex] = ways;
+    return memo[money][coinIndex];
 }
 
 
-void solve(){  
-    int count=0;
-    int N; cin>>N;
-    for (int i = 1 ; i <= N; i++)
-        if(NOD(i)==2) count++;
-    cout<<count<<endl;
+void solve(){      
+
+    memset(memo,-1,sizeof memo);
+    int money;
+    int t; cin>>t;
+    while (t--)
+    {
+        cin>>money;
+        cout<<waysOfCng(money,0)<<endl;
+    }
+    
 }
 
 int main(){
@@ -161,6 +171,7 @@ int main(){
 
 
     solve();
+    return 0;
 }
 
 
