@@ -119,38 +119,32 @@ const ld     PII =  3.14159265358979323846;  //20digits
 #define yes    printf("YES\n")
 #define no     printf("NO\n")
 void solve(){  
-    
-        ll n,m,k; cin>>n>>m>>k;
-        ll a[n];
-        ll b[m];
-            
-        for(ll i=0;i<n;i++){
-            cin>>a[i];
+    int t; cin>>t;
+    while (t--)
+    {
+        vi odd,even;
+        int n; cin>>n;        
+        int x,y;    
+        for(int i=0;i<2*n;i++){
+            cin>>x; 
+            if(x%2==0) even.pb(i);
+            else odd.pb(i);
         }
-        for(ll j=0;j<m;j++){
-            cin>>b[j];
-        }
+        
 
-        sort(a,a+n);
-        sort(b,b+m);
+        x = odd.size();
+        y = even.size();
+
         ll cnt = 0;
-        for(ll i=0,j=0;i<n;i++){
-            while (j<m)
-            {
-                if(b[j]+k < a[i]) j++;
-
-                else if( b[j]-k > a[i]  ){
-                    break;
-                }
-                else{
-                    j++; cnt++;
-                    break;                    
-                }
-            }
-            
+        for(int i = 0; i < x-1 && cnt<n-1; i+=2){
+            cout<<odd[i]+1<<" "<<odd[i+1]+1<<endl;
+            cnt++;
         }
-
-        cout<<cnt<<endl;  
+        for(int i = 0; i < y-1 && cnt<n-1; i+=2){
+            cout<<even[i]+1<<" "<<even[i+1]+1<<endl;
+            cnt++;
+        }                
+    }
 }
 
 int main(){
@@ -159,4 +153,4 @@ int main(){
     cin.tie(NULL), cout.tie(NULL);
     solve();
 }
-/* problem link: */
+/* problem link: https://codeforces.com/contest/1370/problem/B */
