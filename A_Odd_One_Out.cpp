@@ -17,13 +17,10 @@ void solve() {
     cin>>t;
     while (t--)
     {
-        int arr[3];
-        cin>>arr[0]>>arr[1]>>arr[2];
-
-        sort(arr,arr+3);
-
-        if( arr[0] != arr[1] ) cout<<arr[0]<<endl;
-        else cout<<arr[2]<<endl;
+        ll a,b,c;
+        
+        cin>>a>>b>>c;
+        cout<<(a^b^c)<<endl;
     }
     
 }
