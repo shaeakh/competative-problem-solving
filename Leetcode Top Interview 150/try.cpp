@@ -162,13 +162,31 @@ vector<vector<int>> threeSum(vector<int> &nums)
     }
 }
 
+struct node
+{
+    int data;
+    node *next;
+};
+
+
+
 void solve()
 {
-    unordered_map<int, int> m;
-    m[-1] = 0;
-    m[1] = 1;
-    m[0] = 2;
-    auto a = m.find(-1);
+    node a;
+    node b;
+    node c;
+    node d;
+
+    a.data = 1;
+    a.next = &b;
+    
+
+
+
+    node *head = &a;
+
+
+
 }
 
 int main()

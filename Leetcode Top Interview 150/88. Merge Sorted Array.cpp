@@ -1,3 +1,8 @@
+/*bismillahir~rahmanir~rahim*/
+#include <bits/stdc++.h>
+using namespace std;
+
+
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
@@ -20,3 +25,11 @@ public:
         }
     }
 };
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL), cout.tie(NULL);
+
+}
+/* problem link: */
