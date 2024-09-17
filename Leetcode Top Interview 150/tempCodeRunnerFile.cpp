@@ -1,1 +1,0 @@
- cout<<&Bool_array[0]<<" "<<&Bool_array[1]<<endl;

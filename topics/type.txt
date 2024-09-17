@@ -1,0 +1,2 @@
+1. ekta sub array er element er perspective position thik rekhe arekta array banano jay kina 
+    Link : https://codeforces.com/contest/1999/problem/D
