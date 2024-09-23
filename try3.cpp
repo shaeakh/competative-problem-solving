@@ -15,7 +15,24 @@ using namespace std;
 #define pb push_back
 
 void solve() {
-    cout<<"Hello World!";
+    queue<int>q;
+    vector<int>v;
+    q.push(1);
+    v.push_back(1);
+    q.push(2);
+    v.push_back(2);
+    q.push(3);
+    v.push_back(3);
+    while (!q.empty()) {
+        cout << q.front();
+        q.pop();
+    }
+
+    stack<int>s;
+    s.
+
+    cout << "\n";
+    for(auto x: v) cout << x;
 }
 
 int main(){
