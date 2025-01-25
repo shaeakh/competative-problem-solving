@@ -133,45 +133,65 @@ const ld PII = 3.14159265358979323846; // 20digits
 #define yes printf("YES\n")
 #define no printf("NO\n")
 
+string s[20];
+ll max_dis = 0;
+
+bool isvalid(ll X, ll Y, vector<vector<bool>> &vis)
+{
+    if (X < 0 || Y < 0 || X >= vis.size() || Y >= vis[0].size() || vis[X][Y])
+    {
+        return false;
+    }
+    return true;
+}
+
+void vis_king_land(ll X, ll Y, vector<vector<bool>> &vis, string s[])
+{
+    if (isvalid(X, Y, vis) == false || s[X][Y] == 'w')
+        return;
+    vis[X][Y] = true;
+    vis_king_land(X + 1, Y, vis, s);
+    vis_king_land(X - 1, Y, vis, s);
+    vis_king_land(X, Y + 1, vis, s);
+    vis_king_land(X, Y - 1, vis, s);
+}
+
+ll traverse(ll X, ll Y, vector<vector<bool>> &vis, string s[], ll dis)
+{
+    if (isvalid(X, Y, vis) == false || s[X][Y] == 'w')
+    {
+        return dis - 1;
+    }
+    vis[X][Y] = true;
+    traverse(X + 1, Y, vis, s, dis + 1);
+    traverse(X - 1, Y, vis, s, dis + 1);
+    traverse(X, Y + 1, vis, s, dis + 1);
+    traverse(X, Y - 1, vis, s, dis + 1);
+    return dis;
+}
+
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll N, M;
+    cin >> N >> M;
+    vector<vector<bool>> vis(N, vector<bool>(M, false));
+    for (int i = 0; i < N; i++)
     {
-        ll n;
-        cin >> n;
-        if (n < 5)
-        {
-            cout << -1 << endl;
-            continue;
-        }
-        if (n == 5)
-        {
-            cout << "1 3 5 4 2\n";
-            continue;
-        }
-        if (n == 6)
-        {
-            cout << "1 3 5 4 2 6\n";
-            continue;
-        }
-
-        cout << "1 3 5 ";
-        for (ll i = 9; i <= n; i = i + 2)
-        {
-            cout << i << " ";
-        }
-        cout << 7 << " ";
-        for (ll i = 2; i <= n; i = i + 2)
-        {
-            if (i + 2 > n)
-                cout << i;
-            else
-                cout << i << " ";
-        }
-        cout << endl;
+        cin >> s[i];
     }
+    ll X, Y;
+    cin >> X >> Y;
+    vis_king_land(X, Y, vis, s);
+    ll max_l = 0;
+    for (ll i = 0; i < N; i++)
+    {
+        for (ll j = 0; j < M; j++)
+        {
+            
+            max_l = max(max_l, traverse(i, j, vis, s, 0));
+        }
+    }
+    cout << max_l << endl;
 }
 
 int main()

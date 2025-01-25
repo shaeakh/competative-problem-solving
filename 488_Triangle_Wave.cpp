@@ -1,4 +1,3 @@
-/*bismillahir~rahmanir~rahim*/
 #include <bits/stdc++.h>
 #pragma GCC target("popcnt")
 using namespace std;
@@ -56,13 +55,13 @@ const ld PII = 3.14159265358979323846; // 20digits
 #define foreach(i, n) for (__typeof((n).begin()) i = (n).begin(); i != (n).end(); i++)
 
 // for loop
-#define f(i, a, b) for (int i = (a); i < (b); i++)
+#define f(i, a, b) for (ll i = (a); i < (b); i++)
 #define fd(i, a, b) for (ll i = (a); i > (b); i--)
-#define f0(i, b) for (int i = 0; i < b; i++)
-#define f1(i, b) for (int i = 1; i <= b; i++)
-#define fi(i, a, b) for (int i = a; i >= b; i--)
-#define fx(i, a, b, dx) for (int i = a; i < b; i += dx)
-#define fn(i, b) for (int i = 0; i < n; i++)
+#define f0(i, b) for (ll i = 0; i < b; i++)
+#define f1(i, b) for (ll i = 1; i <= b; i++)
+#define fi(i, a, b) for (ll i = a; i >= b; i--)
+#define fx(i, a, b, dx) for (ll i = a; i < b; i += dx)
+#define fn(i, b) for (ll i = 0; i < n; i++)
 
 // container
 #define pii pair<int, int>
@@ -130,8 +129,20 @@ const ld PII = 3.14159265358979323846; // 20digits
 #define mem(a, v) memset(a, v, sizeof(a))
 #define in(n, a, b) (n >= a && n <= b)
 #define balsal printf("dhukse\n")
-#define yes printf("YES\n")
-#define no printf("NO\n")
+#define yes cout << "YES" << endl
+#define no cout << "NO" << endl
+
+// ceil is a bad function
+// think about reverse process
+// read statement carefully
+// think about corner cases before implementing
+// don't forget to comment/uncomment define endl in interactive/non-interactive problems
+// check if you are returning from solve before resetting array values
+// try not to use continue / return statement, try to use if else
+// try to write custom functions if stl one deals with floating point values
+// don't use unordered map without custom hash
+// multiset is bad try to use map if possible
+// don't forget to return a value from a non-void function
 
 void solve()
 {
@@ -139,38 +150,36 @@ void solve()
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin >> n;
-        if (n < 5)
-        {
-            cout << -1 << endl;
-            continue;
-        }
-        if (n == 5)
-        {
-            cout << "1 3 5 4 2\n";
-            continue;
-        }
-        if (n == 6)
-        {
-            cout << "1 3 5 4 2 6\n";
-            continue;
-        }
 
-        cout << "1 3 5 ";
-        for (ll i = 9; i <= n; i = i + 2)
+        ll n, m;
+        cin >> n >> m;
+
+        while (m--)
         {
-            cout << i << " ";
+            for (int i = 1; i < n + 1; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    cout << i;
+                }
+                cout << endl;
+            }
+            
+            for (int i = n - 1; i >= 1; i--)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    cout << i;
+                }
+                cout << endl;
+            }
+            
+            if(m!=0){
+                cout<<"\n";
+            }
         }
-        cout << 7 << " ";
-        for (ll i = 2; i <= n; i = i + 2)
-        {
-            if (i + 2 > n)
-                cout << i;
-            else
-                cout << i << " ";
-        }
-        cout << endl;
+        
+            
     }
 }
 
@@ -181,4 +190,24 @@ int main()
     cin.tie(NULL), cout.tie(NULL);
     solve();
 }
-/* problem link: */
+
+/*  DON'T KNOW SECTION
+
+1. #pragma GCC target("popcnt")
+2. DATA TYPE : int64_t
+3. ios_base::sync_with_stdio(false);
+4. #ifndef ONLINE_JUDGE
+    file;
+    #endif // ONLINE_JUDGE
+5.  #ifndef ONLINE_JUDGE
+    #include "bits/debugTemplate.h"
+    #define dbg(x...)                 \
+        cerr << "[" << #x << "] = ["; \
+        _print(x)
+    #else
+    #define dbg(x...)
+    #endif
+6. #pragma GCC optimize("Ofast")
+   #pragma GCC target("avx,avx2,fma")
+   #pragma GCC optimization ("unroll-loops")
+*/
