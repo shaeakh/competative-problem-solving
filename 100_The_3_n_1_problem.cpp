@@ -133,20 +133,34 @@ const ld     PII =  3.14159265358979323846;  //20digits
 // don't forget to return a value from a non-void function
 
 void solve(){  
-    ll n; cin>>n;
-    ll arr[n];
-    for(ll i=0;i<n;i++) cin>>arr[i];
-    sort(arr,arr+n);
-    bool f = false;
-    for(ll i=0;i<n;i++){
-        if(arr[i]%arr[0]!=0){
-            f = true;
-            cout<<-1<<endl;
-            break;
+    ll n,m;
+    map<ll,ll>memo;
+    while (cin>>n>>m)
+    {
+        for (ll i = min(n,m); i <= max(n,m); i++){
+            if(memo[i]){
+                continue;
+            }
+            ll cnt=1;
+            ll x=i;
+            while(x!=1){
+                if(x%2==0){
+                    x/=2;
+                }
+                else{
+                    x=3*x+1;
+                }
+                cnt++;
+            }
+            memo[i]=cnt;
         }
+        ll max_ans = -1;
+        for (ll i = min(n,m); i <= max(n,m); i++)
+        {
+            max_ans = max(max_ans,memo[i]);
+        }
+        cout<<n<<" "<<m<<" "<<max_ans<<endl;
     }
-    if(!f)
-    cout<<arr[0]<<endl;
     
 }
 

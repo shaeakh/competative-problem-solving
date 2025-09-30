@@ -1,0 +1,1 @@
+{"name":"Local: w","url":"d:\\code\\competative-problem-solving\\w.cpp","tests":[{"id":1758859751028,"input":"5\n80 7 16 4 48","output":"16 3"},{"id":1758859760737,"input":"4\n21 5 3 33","output":"1 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\competative-problem-solving\\w.cpp","group":"local","local":true}

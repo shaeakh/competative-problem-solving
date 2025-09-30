@@ -1,3 +1,4 @@
+/*bismillahir~rahmanir~rahim*/
 #include <bits/stdc++.h>
 #pragma GCC target("popcnt")
 using namespace std;
@@ -6,7 +7,7 @@ using namespace std;
 #define _ ios_base::sync_with_stdio(0);
 #define fastt ios_base::sync_with_stdio(false); cin.tie(0);
 
-//typedef 
+//typedef
 typedef float               flt;
 typedef double              dbl;
 typedef long double         ld;
@@ -33,7 +34,6 @@ const ld     EUL =  2.71828182845904523536;  //20digits
 const ld     PII =  3.14159265358979323846;  //20digits
 #define mx_value    1e19
 
-
 //iteration sector
 #define tr(c, i)            for (auto i = c.begin(); i != c.end(); i++)
 #define all(x)              begin(x), end(x) 
@@ -42,13 +42,13 @@ const ld     PII =  3.14159265358979323846;  //20digits
 #define foreach(i,n)        for(__typeof((n).begin())i =(n).begin();i!=(n).end();i++)
 
 //for loop
-#define f(i,a,b)        for(ll i=(a);i<(b);i++)
+#define f(i,a,b)        for(int i=(a);i<(b);i++)
 #define fd(i,a,b)       for(ll i=(a);i>(b);i--)
-#define f0(i,b)         for(ll i=0;i<b;i++)
-#define f1(i,b)         for(ll i=1;i<=b;i++)
-#define fi(i,a,b)       for(ll i=a;i>=b;i--)
-#define fx(i,a,b,dx)    for(ll i=a;i<b;i+=dx)
-#define fn(i,b)         for(ll i=0;i<n;i++)
+#define f0(i,b)         for(int i=0;i<b;i++)
+#define f1(i,b)         for(int i=1;i<=b;i++)
+#define fi(i,a,b)       for(int i=a;i>=b;i--)
+#define fx(i,a,b,dx)    for(int i=a;i<b;i+=dx)
+#define fn(i,b)         for(int i=0;i<n;i++)
 
 //container
 #define pii             pair <int,int>
@@ -116,38 +116,26 @@ const ld     PII =  3.14159265358979323846;  //20digits
 #define mem(a,v) memset(a,v,sizeof(a))
 #define in(n,a,b) ( n>=a && n<=b )
 #define balsal printf("dhukse\n")
-#define yes    cout<<"YES"<<endl
-#define no     cout<<"NO"<<endl
-
-
-// ceil is a bad function
-// think about reverse process
-// read statement carefully
-// think about corner cases before implementing
-// don't forget to comment/uncomment define endl in interactive/non-interactive problems
-// check if you are returning from solve before resetting array values
-// try not to use continue / return statement, try to use if else
-// try to write custom functions if stl one deals with floating point values
-// don't use unordered map without custom hash
-// multiset is bad try to use map if possible
-// don't forget to return a value from a non-void function
-
+#define yes    printf("YES\n")
+#define no     printf("NO\n")
 void solve(){  
-    ll n; cin>>n;
-    ll arr[n];
-    for(ll i=0;i<n;i++) cin>>arr[i];
-    sort(arr,arr+n);
-    bool f = false;
-    for(ll i=0;i<n;i++){
-        if(arr[i]%arr[0]!=0){
-            f = true;
-            cout<<-1<<endl;
-            break;
+    int t; cin>>t;
+    while (t--)
+    {
+        int n; cin>>n;
+        int a[n],b[n];
+        for(int i=0;i<n;i++) cin>>a[i];
+        for(int i=0;i<n;i++) cin>>b[i];
+
+        int max_rounds = 0;
+        for(int i=0;i<n;i++){
+            if(a[i]>b[i]){
+                int temp = a[i]-b[i];
+                max_rounds = max_rounds + temp ;
+            }
         }
+        cout << max_rounds + 1<<endl;
     }
-    if(!f)
-    cout<<arr[0]<<endl;
-    
 }
 
 int main(){
@@ -156,26 +144,4 @@ int main(){
     cin.tie(NULL), cout.tie(NULL);
     solve();
 }
-
-
-
-/*  DON'T KNOW SECTION
-
-1. #pragma GCC target("popcnt")
-2. DATA TYPE : int64_t
-3. ios_base::sync_with_stdio(false);
-4. #ifndef ONLINE_JUDGE
-    file;
-    #endif // ONLINE_JUDGE
-5.  #ifndef ONLINE_JUDGE
-    #include "bits/debugTemplate.h"
-    #define dbg(x...)                 \
-        cerr << "[" << #x << "] = ["; \
-        _print(x)
-    #else
-    #define dbg(x...)
-    #endif
-6. #pragma GCC optimize("Ofast")
-   #pragma GCC target("avx,avx2,fma")
-   #pragma GCC optimization ("unroll-loops")
-*/
+/* problem link: */
