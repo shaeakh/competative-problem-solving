@@ -21,24 +21,19 @@ void solve(){
     char c; cin>>c;
     string s; cin>>s;
     ll n = s.size();
-    if(c=='L'){
-        for (ll i = 0; i < n; i++)
-        {
-            ll index = m[s[i]];
-            index++;
-            s[i] = keyboard[index];
-        }
-        cout<<s<<endl;
+    ll sign;
+    
+    if(c=='L')
+        sign = 1;
+    else
+        sign = -1;
+
+    for (ll i = 0; i < n; i++){
+        ll index = m[s[i]];
+        index = index + sign;
+        s[i] = keyboard[index];
     }
-    else{
-        for (ll i = 0; i < n; i++)
-        {
-            ll index = m[s[i]];
-            index--;
-            s[i] = keyboard[index];
-        }
-        cout<<s<<endl;
-    }
+    cout<<s<<endl;
 }
 
 int main(){
