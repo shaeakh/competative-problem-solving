@@ -1,10 +1,7 @@
-/*bismillahir~rahmanir~rahim*/
 #include <bits/stdc++.h>
 using namespace std;
 
 typedef long long ll;
-#define yes cout<<"YES\n" 
-#define no  cout<<"NO\n" 
 
 ll arr[] = {
     1,2,3,4,5,6,7,8,9,
@@ -19,30 +16,19 @@ ll arr[] = {
     777777777,888888888,999999999
 };
 
-ll findMin(ll n){
-    ll l=0,r=80;
-    ll m ;
-    
-    
-}
+void solve() {  
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-void solve(){  
-    
-    map<ll,ll>m;
-    ll t; cin>>t;
-    while (t--)
-    {
-        ll n; cin>>n;
-        findMin(n);
-        // if(m[n]>0){
-        //     cout<<m[n]<<endl;
-        //     continue;
-        // }
-        
+    int t; cin >> t;
+    while (t--) {
+        ll n; cin >> n;
+        ll ans = upper_bound(arr, arr + 81, n) - arr;
+        cout << ans << "\n";
     }
 }
 
-int main(){
+int main() {
     solve();
+    return 0;
 }
-/* problem link: */
