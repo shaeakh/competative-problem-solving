@@ -15,6 +15,7 @@ void solve(){
         ll min_ = min(a,b);
         ll ans = max(max_,min_*2);
         cout<<ans*ans<<endl;
+        yes;
     }
 }
 
