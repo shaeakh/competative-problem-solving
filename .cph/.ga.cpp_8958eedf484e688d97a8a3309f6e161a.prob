@@ -1,0 +1,1 @@
+{"name":"Local: ga","url":"d:\\code\\competative-problem-solving\\ga.cpp","tests":[{"id":1760164038097,"input":"2\n1 3\n391 555\n0 0\n9 4","output":"1337\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\competative-problem-solving\\ga.cpp","group":"local","local":true}

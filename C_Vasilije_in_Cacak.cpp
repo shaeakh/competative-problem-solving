@@ -5,24 +5,25 @@ using namespace std;
 typedef long long ll;
 #define yes cout<<"YES\n" 
 #define no  cout<<"NO\n" 
+/*
+1 2 3 4 5 6 7 8 9
+9 + 8 + 7 + 6 + 5 + 4 + 1 
+
+*/
+
 
 void solve(){    
     ll t; cin>>t;
-    string a = "abcdefghijklmnopqrstuvwxyz";
     while (t--)
-
-
-
-    
     {
-        ll n,k; cin>>n>>k;
-        string s; cin>>s;
-        map<char,ll>m;
-        for(char c:s) m[c]++;
-
-        ll even=0,odd=0;
-
-
+       ll n,k,x;
+       cin>>n>>k>>x;
+       ll sum1=(n*(n+1))/2;
+       ll m=(n-k);
+       ll sum=(n*(n+1))/2-(m*(m+1))/2;
+       ll s=(k*(k+1))/2;
+       if(sum>=x && x>=s)yes;
+       else no;        
     }
 }
 
